@@ -7,11 +7,11 @@ Hsu byl architektem a hlavním designérem šachového počítače IBM Deep Blue
 
 https://en.wikipedia.org/wiki/Feng-hsiung_Hsu
 
-Architekt a hlavní designér šachového počítače IBM Deep Blue, který porazil mistra světa Garriho Kasparova v roce 1997.
-Vytvořil šachový počítač Deep Thought, první počítač, který porazil velmistry a dosáhl velmistrovské úrovně v šachu.
-Získal Mephisto Best-Publication Award v roce 1990 za svou doktorskou disertaci o šachových strojích.
-Obdržel prestižní ACM Grace Murray Hopper Award v roce 1991 za příspěvky v oblasti architektury a algoritmů pro šachové stroje.
-Autor knihy Behind Deep Blue: Building the Computer that Defeated the World Chess Champion, která dokumentuje jeho práci na šachových počítačích.
+* Architekt a hlavní designér šachového počítače IBM Deep Blue, který porazil mistra světa Garriho Kasparova v roce 1997.
+* Vytvořil šachový počítač Deep Thought, první počítač, který porazil velmistry a dosáhl velmistrovské úrovně v šachu.
+* Získal Mephisto Best-Publication Award v roce 1990 za svou doktorskou disertaci o šachových strojích.
+* Obdržel prestižní ACM Grace Murray Hopper Award v roce 1991 za příspěvky v oblasti architektury a algoritmů pro šachové stroje.
+* Autor knihy Behind Deep Blue: Building the Computer that Defeated the World Chess Champion, která dokumentuje jeho práci na šachových počítačích.
 
 
 
