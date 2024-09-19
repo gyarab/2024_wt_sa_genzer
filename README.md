@@ -5,6 +5,8 @@ Hsu byl architektem a hlavním designérem šachového počítače IBM Deep Blue
 
 ![image](https://github.com/user-attachments/assets/03904b7e-6baa-44d1-8248-0004d076ec4c)
 
+https://en.wikipedia.org/wiki/Feng-hsiung_Hsu
+
 
 
 
