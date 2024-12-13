@@ -25,6 +25,46 @@
                 </div>
               </div>
         </div>
+        <script>
+          function akce() {
+            // alert('asdf')
+            let obr = document.getElementById('obr01')
+            console.log('-----======-----')
+            console.log(obr)
+            let src01 = "https://placecats.com/200/200"
+            let src02 = "https://placehold.co/200x200"
+            if (obr.src === src02) {
+              obr.src = src01
+            }
+            else {
+              obr.src = src02
+            }
+    
+            let borderStyle = "10px solid red"
+            
+            if (obr.style.border === borderStyle) {
+              obr.style.border = ""
+            }
+            else {
+              obr.style.border = borderStyle
+            }
+    
+          }
+        </script>
+                <div class="row">
+                  <div class="d-none d-sm-block col-sm-6">
+                    <img id="obr01" src="https://placehold.co/200x200" alt="dummy img" class="w-100">
+                  </div>
+                  <div class="col-12 col-sm-6 col-xl-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat aliquam sunt earum sit ipsum. Reprehenderit pariatur hic iusto voluptate sit itaque provident neque exercitationem porro mollitia assumenda commodi, tenetur inventore!
+                    </p>
+                    <button
+                      class="btn btn-outline-primary btn-lg"
+                      onclick="akce()"
+                    >Zmáčkni mě</button>
+                  </div>
+                </div>
 
         <div class="col-sm-6">
           <div class="card">
