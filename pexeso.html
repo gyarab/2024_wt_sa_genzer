@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pexeso</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    h1 {
+      font-size: 34px;
+      color: #333;
+      margin: 20px 0;
+    }
+    .game-container {
+      display: grid;
+      grid-template-columns: repeat(4, 110px);
+      grid-gap: 12px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+    .card {
+      width: 110px;
+      height: 110px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+    }
+    .card img {
+      display: none;
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .card.flipped img {
+      display: block;
+    }
+    .card.matched {
+      visibility: hidden;
+    }
+    .score {
+      font-size: 22px;
+      margin: 10px;
+    }
+    #resetButton {
+      padding: 10px 20px;
+      font-size: 18px;
+      color: white;
+      background-color: #0056b3;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    #resetButton:hover {
+      background-color: #003f7f;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pexeso</h1>
+  <div class="score">Skóre: <span id="score">0</span></div>
+  <div class="game-container" id="gameContainer"></div>
+  <button id="resetButton">Reset</button>
+
+  <script>
+    const images = [
+      'obrazky/image1.png',
+      'obrazky/image2.png',
+      'obrazky/image3.png',
+      'obrazky/image4.png',
+      'obrazky/image5.png',
+      'obrazky/image6.png',
+      'obrazky/image7.png',
+      'obrazky/image8.png'
+    ];
+
+    let state = {
+      cards: [],
+      flippedCards: [],
+      score: 0
+    };
+
+    const gameContainer = document.getElementById('gameContainer');
+    const scoreElement = document.getElementById('score');
+    const resetButton = document.getElementById('resetButton');
+
+    function initializeGame() {
+      state.score = 0;
+      state.flippedCards = [];
+      state.cards = shuffle([...images, ...images]).map((image, index) => ({
+        id: index,
+        image,
+        matched: false
+      }));
+      renderGame();
+      updateScore();
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function renderGame() {
+      gameContainer.innerHTML = '';
+      state.cards.forEach((card) => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+        cardElement.dataset.id = card.id;
+        if (card.matched) {
+          cardElement.classList.add('matched');
+        }
+        if (state.flippedCards.includes(card.id)) {
+          cardElement.classList.add('flipped');
+        }
+
+        const imgElement = document.createElement('img');
+        imgElement.src = card.image;
+        cardElement.appendChild(imgElement);
+        cardElement.addEventListener('click', () => handleCardClick(card.id));
+        gameContainer.appendChild(cardElement);
+      });
+    }
+
+    function handleCardClick(cardId) {
+      if (state.flippedCards.length < 2 && !state.flippedCards.includes(cardId)) {
+        state.flippedCards.push(cardId);
+        renderGame();
+
+        if (state.flippedCards.length === 2) {
+          const [firstId, secondId] = state.flippedCards;
+          const firstCard = state.cards.find(card => card.id === firstId);
+          const secondCard = state.cards.find(card => card.id === secondId);
+
+          if (firstCard.image === secondCard.image) {
+            firstCard.matched = true;
+            secondCard.matched = true;
+            state.score++;
+            updateScore();
+          }
+
+          setTimeout(() => {
+            state.flippedCards = [];
+            renderGame();
+          }, 1000);
+        }
+      }
+    }
+
+    function updateScore() {
+      scoreElement.textContent = state.score;
+    }
+
+    resetButton.addEventListener('click', initializeGame);
+
+    initializeGame();
+  </script>
+</body>
+</html>
